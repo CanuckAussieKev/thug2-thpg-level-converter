@@ -29,7 +29,7 @@ crib`; `net_dc`, `thpg_net_dc`, `bedroom` all work); the default is all six. `--
 
 `selfcheck` reads every file of every zone archive (scenes and their strips, textures' base levels untiled, collision,
 qb / node arrays) and round-trips THUG2's LA / TestLevel files; `list` shows the levels (what each is made of). `audit`
-is thug2-level-converter-core/thp8/render_audit.ts over THPG's levels (its README): `spot net_philly "(5440.8, 158.8,
+is thug2-thp8-level-converter/thp8/render_audit.ts over THPG's levels (its README): `spot net_philly "(5440.8, 158.8,
 -4604.8)"` lists the meshes at a screenshot sidecar's position with their THPG templates and textures.
 
 ## The levels
@@ -106,10 +106,10 @@ All big-endian. Worked out from the data; no format notes for THPG's files that 
 - **Collision** (`.hkc`): Havok 4.6 packfiles ("Havok-4.6.0-r1"; THP8's are 4.0): the MOPP's child an
   `hkNxStorageExtendedMeshShape` - triangle subparts read from their `meshstorage` (float4 vertices, 16 / 32-bit
   indices, per-triangle materials {filterInfo, nodeInfo, friction}), convex shape subparts from their `shapestorage`
-  (thug2-level-converter-core/thp8/havok.ts). A face's word is THP8's (terrain << 16 | face flags) but 0x800, set on nearly every face and
+  (thug2-thp8-level-converter/thp8/havok.ts). A face's word is THP8's (terrain << 16 | face flags) but 0x800, set on nearly every face and
   not THUG2's meaning there ("under ok"): left out.
 - **Scripts**: THP8's token stream plus a 0x27 elseif with two u16 jumps (THUG2's has none): made `else` + a nested
-  `if`, closed by one more `endif` (thug2-level-converter-core/thaw/thaw_scripts.ts). Some node fields name globals with `$`: plain names.
+  `if`, closed by one more `endif` (thug2-thaw-level-converter/thaw/thaw_scripts.ts). Some node fields name globals with `$`: plain names.
 - Not identified (not needed): the zone archives' entries 0x33180544 (a count, then float4s), 0x4A2E1FA0 and
   0x43904241 (8 bytes).
 

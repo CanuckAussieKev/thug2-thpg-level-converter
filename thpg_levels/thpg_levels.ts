@@ -5,7 +5,7 @@
 // THPG is THP8's engine a year on: the same archives, scripts, node arrays, textures and scene container, so this is
 // thug2-thp8-level-converter/thp8_levels' converter run with THPG's profile (thp8_levels.useGame): its zones and levels, its scene
 // reader (scene.ts: material block 0x0410, the uv fields re-packed), its light maps (one a zone, light.ts), its global
-// stand-in textures, its collision (Havok 4.6's hkNxStorageExtendedMeshShape - thug2-level-converter-core/thp8/havok.ts).
+// stand-in textures, its collision (Havok 4.6's hkNxStorageExtendedMeshShape - thug2-thp8-level-converter/thp8/havok.ts).
 //
 // THPG's world is three cities streamed in zones that share one frame (metres, y up, as THP8's town): Philadelphia
 // (z_love, z_fdr, z_bell, z_slums), Washington DC (z_monuments, z_museums, z_museum_int), Baltimore (z_bcity,
@@ -18,10 +18,10 @@ import * as common from "thug2-level-converter-core/level_port/common.ts";
 import { parseCli } from "thug2-level-converter-core/lib/cli.ts";
 import { findCaseless, resolveInstall } from "thug2-level-converter-core/lib/install.ts";
 import { isMain, print, pyExit, runMain } from "thug2-level-converter-core/lib/py.ts";
-import * as renderAudit from "thug2-level-converter-core/thp8/render_audit.ts";
-import * as thp8 from "thug2-level-converter-core/thp8/thp8.ts";
-import * as T from "thug2-level-converter-core/thp8/thp8_levels.ts";
-import * as xenos from "thug2-level-converter-core/thp8/xenos.ts";
+import * as renderAudit from "thug2-thp8-level-converter/thp8/render_audit.ts";
+import * as thp8 from "thug2-thp8-level-converter/thp8/thp8.ts";
+import * as T from "thug2-thp8-level-converter/thp8/thp8_levels.ts";
+import * as xenos from "thug2-thp8-level-converter/thp8/xenos.ts";
 import * as layers from "./layers.ts";
 import * as light from "./light.ts";
 import "./scene.ts"; // (registers the 0x0410 scene reader with geom.ts)
@@ -207,7 +207,7 @@ export function parseCommandLine(argv: readonly string[]): T.Args {
 
 export function main(argv: readonly string[] = process.argv.slice(2)): number {
     if (argv[0] === "audit") {
-        // (thug2-level-converter-core/thp8/render_audit.ts over THPG's levels: textures / zfight / black / spot, its own options)
+        // (thug2-thp8-level-converter/thp8/render_audit.ts over THPG's levels: textures / zfight / black / spot, its own options)
         const rest = argv.slice(1);
         const i = rest.indexOf("--thpg");
         const root = i >= 0 ? rest[i + 1]! : DEFAULT_ROOT;

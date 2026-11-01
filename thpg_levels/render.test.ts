@@ -5,10 +5,10 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { checksum } from "thug2-level-converter-core/level_port/qb.ts";
-import * as geom from "thug2-level-converter-core/thp8/geom.ts";
-import * as mats from "thug2-level-converter-core/thp8/materials.ts";
-import { layerRepeat } from "thug2-level-converter-core/thp8/thp8_levels.ts";
-import type * as xenos from "thug2-level-converter-core/thp8/xenos.ts";
+import * as geom from "thug2-thp8-level-converter/thp8/geom.ts";
+import * as mats from "thug2-thp8-level-converter/thp8/materials.ts";
+import { layerRepeat } from "thug2-thp8-level-converter/thp8/thp8_levels.ts";
+import type * as xenos from "thug2-thp8-level-converter/thp8/xenos.ts";
 import * as layers from "./layers.ts";
 import * as light from "./light.ts";
 import * as scene from "./scene.ts";

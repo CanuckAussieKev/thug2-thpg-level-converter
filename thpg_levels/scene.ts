@@ -1,5 +1,5 @@
 // NOT ORIGINAL - Tony Hawk's Proving Ground's scenes (.scn in the zone archives, and the models' .mdl; Xbox 360,
-// big-endian) read into thug2-level-converter-core/thp8/geom.ts's forms - worked out from the data (no code of the game used).
+// big-endian) read into thug2-thp8-level-converter/thp8/geom.ts's forms - worked out from the data (no code of the game used).
 //
 // The container and the scene are THP8's (geom.ts): u32 0, 7 x 0xCABAAAFA, the material block at 0x20 (u16 version,
 // u16 count, u32 size from 0x20, u32 offset of the first record from 0x20), then 0xBABEFACE and the scene (sectors,
@@ -31,7 +31,7 @@
 //   one after the other from 20 (a kind-3 field as its first two halves), so geom.readVertices reads them in order.
 
 import { FormatError } from "thug2-level-converter-core/level_port/binio.ts";
-import * as geom from "thug2-level-converter-core/thp8/geom.ts";
+import * as geom from "thug2-thp8-level-converter/thp8/geom.ts";
 
 export const VERSION = 0x0410;
 export const SECTOR_SIZE = 0x60; // (THP8's 0x50: +0 0, +4 the node's name, +8 flags, then -1, -1)
