@@ -11,7 +11,7 @@ is thug2-thp8-level-converter/thp8_levels' converter run with THPG's profile (`t
 
 ## Running it
 
-Needs Node 24+ (`npm install` once), NeverScript (`tools\build_neverscript.ps1` -> `out\neverscript\ns.exe`) and, to
+Needs Node 24+ (`npm install` once), NeverScript's ns (`npx thug2-neverscript fetch`, or the decomp's `tools\build_neverscript.ps1`) and, to
 install the levels, thug2-content-pipeline/menu_level/make_menu_level.ts.
 
     node thpg_levels/thpg_levels.ts convert [levels...] [--thpg <folder>] [--thug2 C:\Games\THUG2]

@@ -14,7 +14,6 @@
 // PHILLY (an area closed off by its barriers: z_online_<x>) and the SKATE LOUNGE (z_crib with its default theme).
 
 import * as path from "node:path";
-import * as common from "thug2-level-converter-core/level_port/common.ts";
 import { parseCli } from "thug2-level-converter-core/lib/cli.ts";
 import { findCaseless, resolveInstall } from "thug2-level-converter-core/lib/install.ts";
 import { isMain, print, pyExit, runMain } from "thug2-level-converter-core/lib/py.ts";
@@ -171,7 +170,7 @@ const USAGE = `usage: thpg_levels.ts {convert,selfcheck,list,audit} [levels ...]
   --thug2     THUG2's folder (default C:\\Games\\THUG2) - the install root or its Game folder
   --thpg      Proving Ground's folder, holding DATA\\COMPRESSED (default ${DEFAULT_ROOT})
   --out       where convert writes (default <thug2>\\${STAGING})
-  --ns        NeverScript's compiler (default out\\neverscript\\ns.exe)
+  --ns        NeverScript's ns (default: found - npx thug2-neverscript where / fetch)
   --no-mips   no mip levels (faster)
   --leave-out a regular expression: sectors whose names match are left out (scene and collision)`;
 
@@ -199,7 +198,7 @@ export function parseCommandLine(argv: readonly string[]): T.Args {
         thug2: values.thug2 ?? "C:\\Games\\THUG2",
         thp8: values.thpg ?? DEFAULT_ROOT,
         out: values.out ?? null,
-        ns: values.ns ?? common.NS,
+        ns: values.ns ?? "",
         noMips: values["no-mips"] ?? false,
         leaveOut: values["leave-out"] ? new RegExp(values["leave-out"], "i") : null,
     };
