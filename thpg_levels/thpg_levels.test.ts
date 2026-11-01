@@ -4,13 +4,13 @@
 
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { checksum } from "../level_port/qb.ts";
-import { pack } from "../lib/struct.ts";
-import * as thaw from "../thaw/thaw.ts";
-import { scriptToks } from "../thaw/thaw_scripts.ts";
-import * as geom from "../thp8/geom.ts";
-import * as mats from "../thp8/materials.ts";
-import type * as xenos from "../thp8/xenos.ts";
+import { checksum } from "thug2-level-converter-core/level_port/qb.ts";
+import { pack } from "thug2-level-converter-core/lib/struct.ts";
+import * as thaw from "thug2-level-converter-core/thaw/thaw.ts";
+import { scriptToks } from "thug2-level-converter-core/thaw/thaw_scripts.ts";
+import * as geom from "thug2-level-converter-core/thp8/geom.ts";
+import * as mats from "thug2-level-converter-core/thp8/materials.ts";
+import type * as xenos from "thug2-level-converter-core/thp8/xenos.ts";
 import * as layers from "./layers.ts";
 import * as light from "./light.ts";
 import * as scene from "./scene.ts";

@@ -6,15 +6,15 @@ PROVING GROUND" section: Up / Down switches games). Nothing of either game is in
 copies each time.
 
 THPG is Project 8's engine a year on - the same archives, scripts, node arrays, textures and scene container - so this
-is tools/pipeline/thp8_levels' converter run with THPG's profile (`thp8_levels.useGame`): what differs is here
+is thug2-thp8-level-converter/thp8_levels' converter run with THPG's profile (`thp8_levels.useGame`): what differs is here
 (scene.ts, light.ts, layers.ts, thpg_levels.ts) and in the readers it shares with THP8 (geom.ts, havok.ts).
 
 ## Running it
 
 Needs Node 24+ (`npm install` once), NeverScript (`tools\build_neverscript.ps1` -> `out\neverscript\ns.exe`) and, to
-install the levels, tools/pipeline/menu_level/make_menu_level.ts.
+install the levels, thug2-content-pipeline/menu_level/make_menu_level.ts.
 
-    node tools/pipeline/thpg_levels/thpg_levels.ts convert [levels...] [--thpg <folder>] [--thug2 C:\Games\THUG2]
+    node thpg_levels/thpg_levels.ts convert [levels...] [--thpg <folder>] [--thug2 C:\Games\THUG2]
     node tools/pipeline/menu_level/make_menu_level.ts [--game C:\Games\THUG2]
 
 `--thpg` is the folder holding `DATA\COMPRESSED` (default `C:\Games\Tony Hawk's Proving Grounds\ProvingGround`).
@@ -23,13 +23,13 @@ install the levels, tools/pipeline/menu_level/make_menu_level.ts.
 crib`; `net_dc`, `thpg_net_dc`, `bedroom` all work); the default is all six. `--no-mips` skips the mip levels (faster).
 `make_menu_level.ts` then copies them into the data overlay and adds them to Levels.qb and the level select.
 
-    node tools/pipeline/thpg_levels/thpg_levels.ts selfcheck
-    node tools/pipeline/thpg_levels/thpg_levels.ts list
-    node tools/pipeline/thpg_levels/thpg_levels.ts audit {textures,zfight,black,spot} [levels...] [--thug2 C:\Games\THUG2]
+    node thpg_levels/thpg_levels.ts selfcheck
+    node thpg_levels/thpg_levels.ts list
+    node thpg_levels/thpg_levels.ts audit {textures,zfight,black,spot} [levels...] [--thug2 C:\Games\THUG2]
 
 `selfcheck` reads every file of every zone archive (scenes and their strips, textures' base levels untiled, collision,
 qb / node arrays) and round-trips THUG2's LA / TestLevel files; `list` shows the levels (what each is made of). `audit`
-is tools/pipeline/thp8_levels/render_audit.ts over THPG's levels (its README): `spot net_philly "(5440.8, 158.8,
+is thug2-level-converter-core/thp8/render_audit.ts over THPG's levels (its README): `spot net_philly "(5440.8, 158.8,
 -4604.8)"` lists the meshes at a screenshot sidecar's position with their THPG templates and textures.
 
 ## The levels
@@ -62,7 +62,7 @@ city's zones as levels by themselves, the other lounge themes, z_mainmenu, z_nav
 z_world, z_viewer, z_ambientscenes and the test levels (`z_testlevel*`).
 
 The sign texts are THPG's (WORLD, DC... - the level select's own names where THPG's are abbreviations: WASHINGTON DC,
-PHILADELPHIA); the pictograms are ours (tools/pipeline/menu_level/level_select_icons.ts, THPG_LEVELS in
+PHILADELPHIA); the pictograms are ours (thug2-content-pipeline/menu_level/level_select_icons.ts, THPG_LEVELS in
 level_select.ts). DC, BALTIMORE and PHILADELPHIA have stars at their cities.
 
 ## THPG's formats (what differs from THP8's)
@@ -106,10 +106,10 @@ All big-endian. Worked out from the data; no format notes for THPG's files that 
 - **Collision** (`.hkc`): Havok 4.6 packfiles ("Havok-4.6.0-r1"; THP8's are 4.0): the MOPP's child an
   `hkNxStorageExtendedMeshShape` - triangle subparts read from their `meshstorage` (float4 vertices, 16 / 32-bit
   indices, per-triangle materials {filterInfo, nodeInfo, friction}), convex shape subparts from their `shapestorage`
-  (thp8_levels/havok.ts). A face's word is THP8's (terrain << 16 | face flags) but 0x800, set on nearly every face and
+  (thug2-level-converter-core/thp8/havok.ts). A face's word is THP8's (terrain << 16 | face flags) but 0x800, set on nearly every face and
   not THUG2's meaning there ("under ok"): left out.
 - **Scripts**: THP8's token stream plus a 0x27 elseif with two u16 jumps (THUG2's has none): made `else` + a nested
-  `if`, closed by one more `endif` (thaw_levels/thaw_scripts.ts). Some node fields name globals with `$`: plain names.
+  `if`, closed by one more `endif` (thug2-level-converter-core/thaw/thaw_scripts.ts). Some node fields name globals with `$`: plain names.
 - Not identified (not needed): the zone archives' entries 0x33180544 (a count, then float4s), 0x4A2E1FA0 and
   0x43904241 (8 bytes).
 

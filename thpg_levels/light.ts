@@ -1,4 +1,4 @@
-// NOT ORIGINAL - Tony Hawk's Proving Ground's light maps made to read as THP8's (tools/pipeline/thp8_levels/materials.ts),
+// NOT ORIGINAL - Tony Hawk's Proving Ground's light maps made to read as THP8's (thug2-level-converter-core/thp8/materials.ts),
 // and collision for a zone that has none - worked out from the data.
 //
 // THP8 lists two light maps last in a lit material (an ambient map and a shadow map, the vertex's last two uv fields);
@@ -7,12 +7,12 @@
 // second "map" after it - the same texture under a checksum of its own - and its meshes a copy of the last uv field, so
 // THP8's converter reads the pair; LIGHTING takes the light from the first map alone (no sun term).
 
-import { checksum } from "../level_port/qb.ts";
-import * as geom from "../thp8/geom.ts";
-import type * as havok from "../thp8/havok.ts";
-import * as mats from "../thp8/materials.ts";
-import * as thp8 from "../thp8/thp8.ts";
-import * as xenos from "../thp8/xenos.ts";
+import { checksum } from "thug2-level-converter-core/level_port/qb.ts";
+import * as geom from "thug2-level-converter-core/thp8/geom.ts";
+import type * as havok from "thug2-level-converter-core/thp8/havok.ts";
+import * as mats from "thug2-level-converter-core/thp8/materials.ts";
+import * as thp8 from "thug2-level-converter-core/thp8/thp8.ts";
+import * as xenos from "thug2-level-converter-core/thp8/xenos.ts";
 import { repack } from "./scene.ts";
 
 // light = map x LIGHT_SCALE / (1 + LIGHT_KNEE x map) - ours (THPG's shaders aren't read). The outdoor maps hold the

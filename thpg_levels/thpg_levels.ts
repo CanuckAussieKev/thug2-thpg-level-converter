@@ -1,11 +1,11 @@
 // NOT ORIGINAL - Tony Hawk's Proving Ground's levels (the Xbox 360 game's data) converted to THUG2's formats, for the
-// level select's PROVING GROUND section (tools/pipeline/menu_level/make_menu_level.ts). Nothing of either game is in the
+// level select's PROVING GROUND section (thug2-content-pipeline/menu_level/make_menu_level.ts). Nothing of either game is in the
 // repo: the files are made from the user's own copies each time. README.md has how to run it and what is converted.
 //
 // THPG is THP8's engine a year on: the same archives, scripts, node arrays, textures and scene container, so this is
-// tools/pipeline/thp8_levels' converter run with THPG's profile (thp8_levels.useGame): its zones and levels, its scene
+// thug2-thp8-level-converter/thp8_levels' converter run with THPG's profile (thp8_levels.useGame): its zones and levels, its scene
 // reader (scene.ts: material block 0x0410, the uv fields re-packed), its light maps (one a zone, light.ts), its global
-// stand-in textures, its collision (Havok 4.6's hkNxStorageExtendedMeshShape - thp8_levels/havok.ts).
+// stand-in textures, its collision (Havok 4.6's hkNxStorageExtendedMeshShape - thug2-level-converter-core/thp8/havok.ts).
 //
 // THPG's world is three cities streamed in zones that share one frame (metres, y up, as THP8's town): Philadelphia
 // (z_love, z_fdr, z_bell, z_slums), Washington DC (z_monuments, z_museums, z_museum_int), Baltimore (z_bcity,
@@ -14,14 +14,14 @@
 // PHILLY (an area closed off by its barriers: z_online_<x>) and the SKATE LOUNGE (z_crib with its default theme).
 
 import * as path from "node:path";
-import * as common from "../level_port/common.ts";
-import { parseCli } from "../lib/cli.ts";
-import { findCaseless, resolveInstall } from "../lib/install.ts";
-import { isMain, print, pyExit, runMain } from "../lib/py.ts";
-import * as renderAudit from "../thp8/render_audit.ts";
-import * as thp8 from "../thp8/thp8.ts";
-import * as T from "../thp8/thp8_levels.ts";
-import * as xenos from "../thp8/xenos.ts";
+import * as common from "thug2-level-converter-core/level_port/common.ts";
+import { parseCli } from "thug2-level-converter-core/lib/cli.ts";
+import { findCaseless, resolveInstall } from "thug2-level-converter-core/lib/install.ts";
+import { isMain, print, pyExit, runMain } from "thug2-level-converter-core/lib/py.ts";
+import * as renderAudit from "thug2-level-converter-core/thp8/render_audit.ts";
+import * as thp8 from "thug2-level-converter-core/thp8/thp8.ts";
+import * as T from "thug2-level-converter-core/thp8/thp8_levels.ts";
+import * as xenos from "thug2-level-converter-core/thp8/xenos.ts";
 import * as layers from "./layers.ts";
 import * as light from "./light.ts";
 import "./scene.ts"; // (registers the 0x0410 scene reader with geom.ts)
@@ -166,7 +166,7 @@ const USAGE = `usage: thpg_levels.ts {convert,selfcheck,list,audit} [levels ...]
   convert     the levels (default all) into <thug2>\\${STAGING}
   selfcheck   read every zone archive's scene / textures / collision / qb files; round-trip THUG2's LA / TestLevel
   list        the levels and their zones
-  audit       thp8_levels/render_audit.ts over THPG's levels (textures / zfight / black / spot <level> <x,y,z>)
+  audit       render_audit.ts (thug2-level-converter-core/thp8) over THPG's levels (textures / zfight / black / spot <level> <x,y,z>)
 
   --thug2     THUG2's folder (default C:\\Games\\THUG2) - the install root or its Game folder
   --thpg      Proving Ground's folder, holding DATA\\COMPRESSED (default ${DEFAULT_ROOT})
@@ -207,7 +207,7 @@ export function parseCommandLine(argv: readonly string[]): T.Args {
 
 export function main(argv: readonly string[] = process.argv.slice(2)): number {
     if (argv[0] === "audit") {
-        // (thp8_levels/render_audit.ts over THPG's levels: textures / zfight / black / spot, its own options)
+        // (thug2-level-converter-core/thp8/render_audit.ts over THPG's levels: textures / zfight / black / spot, its own options)
         const rest = argv.slice(1);
         const i = rest.indexOf("--thpg");
         const root = i >= 0 ? rest[i + 1]! : DEFAULT_ROOT;

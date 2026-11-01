@@ -1,4 +1,4 @@
-// NOT ORIGINAL - Tony Hawk's Proving Ground's layered shader templates read as THP8's (thp8_levels/materials.ts
+// NOT ORIGINAL - Tony Hawk's Proving Ground's layered shader templates read as THP8's (thug2-level-converter-core/thp8/materials.ts
 // planMaterial) - worked out from the data (the templates' texture lists and the meshes' uv fields across the zones).
 //
 // THPG's terrain templates are named by what they have and which of their passes are on: D_ (diffuse maps alone),
@@ -17,12 +17,12 @@
 // Not read (pass 0 only, as THP8's other templates): NBlend (per-pass normal maps), Wet, Env / EnvMask, Prop, Wibble,
 // water, billboards.
 
-import { checksum } from "../level_port/qb.ts";
-import * as dxt from "../thp8/dxt.ts";
-import * as geom from "../thp8/geom.ts";
-import * as mats from "../thp8/materials.ts";
-import * as thp8 from "../thp8/thp8.ts";
-import * as xenos from "../thp8/xenos.ts";
+import { checksum } from "thug2-level-converter-core/level_port/qb.ts";
+import * as dxt from "thug2-level-converter-core/thp8/dxt.ts";
+import * as geom from "thug2-level-converter-core/thp8/geom.ts";
+import * as mats from "thug2-level-converter-core/thp8/materials.ts";
+import * as thp8 from "thug2-level-converter-core/thp8/thp8.ts";
+import * as xenos from "thug2-level-converter-core/thp8/xenos.ts";
 import { keepFields, setParams } from "./scene.ts";
 
 export interface TemplateInfo {
