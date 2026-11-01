@@ -14,9 +14,8 @@
 // PHILLY (an area closed off by its barriers: z_online_<x>) and the SKATE LOUNGE (z_crib with its default theme).
 
 import * as path from "node:path";
-import { parseCli } from "thug2-level-converter-core/lib/cli.ts";
+import { exitWith, isMain, parseCli, print, runMain } from "thug2-level-converter-core/lib/cli.ts";
 import { findCaseless, resolveInstall } from "thug2-level-converter-core/lib/install.ts";
-import { isMain, print, pyExit, runMain } from "thug2-level-converter-core/lib/py.ts";
 import * as renderAudit from "thug2-thp8-level-converter/thp8/render_audit.ts";
 import * as thp8 from "thug2-thp8-level-converter/thp8/thp8.ts";
 import * as T from "thug2-thp8-level-converter/thp8/thp8_levels.ts";
@@ -190,7 +189,7 @@ export function parseCommandLine(argv: readonly string[]): T.Args {
     const command = positionals[0];
     if (command !== "convert" && command !== "selfcheck" && command !== "list") {
         process.stderr.write(`${USAGE}\nerror: the command is convert, selfcheck or list\n`);
-        pyExit(2);
+        exitWith(2);
     }
     return {
         command,
