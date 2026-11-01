@@ -1,6 +1,6 @@
 {
   "name": "thug2-thpg-level-converter",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "private": true,
   "type": "module",
   "description": "THUG2 THPG Level Converter: Tony Hawk's Proving Ground (Xbox 360) levels converted to Tony Hawk's Underground 2's formats.",
@@ -25,9 +25,9 @@
     "test": "node --test \"**/*.test.ts\""
   },
   "dependencies": {
-    "thug2-level-converter-core": "git+https://git@github.com/CanuckAussieKev/thug2-level-converter-core.git#1d172be89692cff3859b379937e842a9fdac4fd2",
-    "thug2-thaw-level-converter": "git+https://git@github.com/CanuckAussieKev/thug2-thaw-level-converter.git#daf3efb39fc342a4a44d7b57ed728d68335bba56",
-    "thug2-thp8-level-converter": "git+https://git@github.com/CanuckAussieKev/thug2-thp8-level-converter.git#114631bfad55e4c2994b9d7a1405ea94b50d6940"
+    "thug2-level-converter-core": "git+https://git@github.com/CanuckAussieKev/thug2-level-converter-core.git#3f7390a5f224cd1c71fcec8077284961dc3610be",
+    "thug2-thaw-level-converter": "git+https://git@github.com/CanuckAussieKev/thug2-thaw-level-converter.git#33d132946f68334210173dc52a44ae7aa2a6595e",
+    "thug2-thp8-level-converter": "git+https://git@github.com/CanuckAussieKev/thug2-thp8-level-converter.git#bc3ef2ae0ccf6ba08c5dd46f57f3b7e7cba7f61f"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.15",
