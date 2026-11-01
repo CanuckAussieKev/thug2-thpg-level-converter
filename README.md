@@ -16,7 +16,7 @@ what is converted and what isn't: [thpg_levels/README.md](thpg_levels/README.md)
 
 Each pinned to a tagged commit in package.json (`git+https://git@github.com/...#<commit>`; one copy of each: every repository that uses one pins the same commit):
 
-- [thug2-level-converter-core](https://github.com/CanuckAussieKev/thug2-level-converter-core): THUG2's formats (scenes, collision, textures, archives, scripts), the level port's common steps and the THUGPRO compatibility register.
+- [thug2-level-converter-core](https://github.com/CanuckAussieKev/thug2-level-converter-core): THUG2's formats (scenes, collision, textures, archives, scripts), the level port's common steps.
 - [thug2-thp8-level-converter](https://github.com/CanuckAussieKev/thug2-thp8-level-converter): THPG is built on Project 8's engine - this converter uses that converter's readers (`thp8/`) and runs its converter (`thp8/thp8_levels.ts`) with THPG's profile.
 - [thug2-thaw-level-converter](https://github.com/CanuckAussieKev/thug2-thaw-level-converter): THAW's formats under Project 8's - its tests read the converted scripts with `thaw/` (the copy Project 8's converter uses).
 
@@ -52,4 +52,4 @@ Checks: `npm run typecheck`, `npm run lint`, `npm test` (the tests that need a g
 
 ## Versions
 
-Releases are tagged `v<major>.<minor>.<patch>`; this is `v1.0.0`. The repositories that use it pin the tagged commit.
+Releases are tagged `v<major>.<minor>.<patch>`; this is `v1.0.1` (core v2.0.0, THAW's converter v1.1.0, Project 8's v1.0.1). The repositories that use it pin the tagged commit.
